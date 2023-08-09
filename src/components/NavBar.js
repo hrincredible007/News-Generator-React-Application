@@ -4,7 +4,7 @@ export default class NavBar extends Component {
   render() {
     return (
       <div>
-        <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+        <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
         <div className="container-fluid">
           <a className="navbar-brand" href="/" style={{marginLeft: '50px'}}>
             News
@@ -35,7 +35,11 @@ export default class NavBar extends Component {
             </ul>
             <div className='form-check form-switch text-dark'>
                 <input className="mr-40 form-check-input" type="checkbox" id="flexSwitchCheckDefault"/>
-                <label className='form-check-label' htmlFor="flexSwitchCheckDefault">Enable DarkMode</label>
+                <label style={
+                  {
+                    color: "white"
+                  }
+                } className='form-check-label' htmlFor="flexSwitchCheckDefault">Enable DarkMode</label>
               </div>
           </div>
         </div>
