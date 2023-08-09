@@ -13,9 +13,9 @@ export default class NewsItem extends Component {
         <div className="card" style={this.sty}>
           <img className="card-img-top" src={imageUrl} alt="..." />
           <div className="card-body">
-            <h5 className="card-title">{title}.</h5>
+            <h5 className="card-title">{title}...</h5>
             <p className="card-text">
-              {description}
+              {description}...
             </p>
             <a href= {url} target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-primary">
               Read More
@@ -23,6 +23,6 @@ export default class NewsItem extends Component {
           </div>
         </div>
       </div>
-    );
+    ); 
   }
 }

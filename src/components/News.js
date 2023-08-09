@@ -116,15 +116,17 @@ export default class News extends Component {
   }
 
   render() {
+    
+   let div_Styling = {position: 'relative', left: '40px', marginTop: '15px'}
     return (
       <div className="container mt-9">
-        <h2>Worldwide News Top-HeadLines</h2>
-        <div className="row mt-5">
+        <h2 className="mt-4"  style={div_Styling}>Worldwide News Top-HeadLines</h2>
+        <div className="row">
           {this.state.articles.map((element) => {
             console.log(element);
             return (
-              <div className="col-md-4" key={element.url}>
-                <NewsItem title=  {element.title} description = {element.description} url = {element.url} imageUrl = {element.urlToImage} />
+              <div className="col-md-4 " key={element.url} style={div_Styling}>
+                <NewsItem title=  {element.title.slice(0, 45)} description = {element.description.slice(0, 88)} url = {element.url} imageUrl = {element.urlToImage} />
               </div>
             );
           })}
