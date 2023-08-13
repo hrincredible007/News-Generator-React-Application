@@ -28,9 +28,7 @@ export default class NavBar extends Component {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link active" href="./about">
-                  About
-                </a>
+                <a className="nav-link active" href="./about">About </a>
               </li>
               <li className="nav-item">
                 <a href="./business" className="nav-link active">Business</a>

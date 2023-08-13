@@ -2,9 +2,9 @@ import React, { Component } from "react";
 
 export default class NewsItem extends Component {
 
-  sty = {
-    width : '18rem'
-  }
+  // sty = {
+  //   width : '18rem'
+  // }
   render() {
     
     let {title, description, url, imageUrl} = this.props;
