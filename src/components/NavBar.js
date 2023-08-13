@@ -28,9 +28,32 @@ export default class NavBar extends Component {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="./about">
+                <a className="nav-link active" href="./about">
                   About
                 </a>
+              </li>
+              <li className="nav-item">
+                <a href="./business" className="nav-link active">Business</a>
+              </li>
+
+              <li className="nav-item">
+                <a href="./entertainment" className="nav-link active">Entertainment</a>
+              </li>
+
+              <li className="nav-item">
+                <a href="./health" className="nav-link active">Health</a>
+              </li>
+
+              <li className="nav-item">
+                <a href="./science" className="nav-link active">Science</a>
+              </li>
+
+              <li className="nav-item">
+                <a href="./sports" className="nav-link active">Sports</a>
+              </li>
+
+              <li className="nav-item">
+                <a href="./technology" className="nav-link active">Technology</a>
               </li>
             </ul>
             <div className='form-check form-switch text-dark'>

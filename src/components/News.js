@@ -1,7 +1,18 @@
 import React, { Component } from "react";
 import NewsItem from "./NewsItem";
-
+import PropTypes from 'prop-types';
+import PreLoader from "./PreLoader";
 export default class News extends Component {
+  static defaultProps = {
+    pageSize: '5',
+    category: 'general',
+    country: 'in'
+  }
+  static propTypes = {
+    pageSize: PropTypes.number,   
+    category: PropTypes.string,
+    country: PropTypes.string,
+  }
   constructor() {
     super();
     // console.log("This is the constructor of the News Component");
@@ -14,21 +25,25 @@ export default class News extends Component {
 
   pressNext = async () => {
     if (this.state.page+1 <= Math.ceil(this.state.totalArticles / this.props.pageSize)) {
-      let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=d3427fb2c91149fa89bb72d355f915da&page=${
+      this.setState({loading:true})
+      let url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=d3427fb2c91149fa89bb72d355f915da&page=${
         this.state.page + 1
       }&pageSize=${this.props.pageSize}`;
+
+
       let parsedData = await fetch(url);
       let jsonData = await parsedData.json();
       this.setState({
         page: this.state.page + 1,
         articles: jsonData.articles,
+        loading: false
       });
     }
   };
   pressPrevious = async () => {
     // console.log("Prev");
-
-    let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=d3427fb2c91149fa89bb72d355f915da&page=${
+    this.setState({loading:true})
+    let url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=d3427fb2c91149fa89bb72d355f915da&page=${
       this.state.page - 1
     }&pageSize=${this.props.pageSize}`;
     let parsedData = await fetch(url);
@@ -36,18 +51,21 @@ export default class News extends Component {
     this.setState({
       page: this.state.page - 1,
       articles: jsonData.articles,
+      loading: false
     });
   };
 
   async componentDidMount() {
+    this.setState({loading:true})
     let url =
-      `https://newsapi.org/v2/top-headlines?country=in&apiKey=d3427fb2c91149fa89bb72d355f915da&page=1&pageSize=${this.props.pageSize}`;
+      `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=d3427fb2c91149fa89bb72d355f915da&page=1&pageSize=${this.props.pageSize}`;
     let parsedData = await fetch(url);
     let jsonData = await parsedData.json();
     // console.log(jsonData.articles);
     this.setState({
       articles: jsonData.articles,
       totalArticles: jsonData.totalResults,
+      loading: false
     });
     // console.log("This is componentDidMount");
   }
@@ -59,14 +77,17 @@ export default class News extends Component {
     // console.log("This is render function");
     let div_Styling = { position: "relative", left: "40px", marginTop: "15px" };
     return (
+
       <div className="container mt-9">
         <h2 className="my-4" style={div_Styling}>
+          
           Worldwide News Top-HeadLines
         </h2>
+        {this.state.loading && <PreLoader></PreLoader>}
         <div className="row">
           {this.state.articles.map((element) => {
             return (
-              <div className="col-md-4 " key={element.url} style={div_Styling}>
+              <div className="col-md-4" key={element.url} style={div_Styling}>
                 <NewsItem
                   title={element.title.slice(0, 50)}
                   description={
@@ -82,7 +103,7 @@ export default class News extends Component {
           })}
         </div>
         <div className="container d-flex justify-content-between m-10">
-          <button
+          {!this.state.loading && <button
             disabled={this.state.page === 1 ? true : false}
             type="button"
             className="btn btn-dark"
@@ -95,8 +116,8 @@ export default class News extends Component {
             onClick={this.pressPrevious}
           >
             Previous
-          </button>
-          <button
+          </button>}
+          {!this.state.loading && <button
             disabled = {this.checkForNext()}
             type="button"
             className="btn btn-dark"
@@ -109,7 +130,7 @@ export default class News extends Component {
             onClick={this.pressNext}
           >
             Next
-          </button>
+          </button>}
         </div>
       </div>
     );
