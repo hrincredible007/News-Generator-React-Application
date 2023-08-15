@@ -1,14 +1,16 @@
 import React, { Component } from "react";
-
+import {
+  Link
+} from "react-router-dom";
 export default class NavBar extends Component {
   render() {
     return (
       <div>
         <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
         <div className="container-fluid">
-          <a className="navbar-brand" href="/" style={{marginLeft: '50px'}}>
+          <Link className="navbar-brand" to="/" style={{marginLeft: '50px'}}>
             News
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -23,37 +25,40 @@ export default class NavBar extends Component {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/">
+                <Link className="nav-link active" aria-current="page" to="/">
                   Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link active" href="./about">About </a>
-              </li>
-              <li className="nav-item">
-                <a href="./business" className="nav-link active">Business</a>
+                </Link>
               </li>
 
               <li className="nav-item">
-                <a href="./entertainment" className="nav-link active">Entertainment</a>
+                <Link className="nav-link active" to="/about">About </Link>
               </li>
 
               <li className="nav-item">
-                <a href="./health" className="nav-link active">Health</a>
+                <Link to="/business" className="nav-link active">Business</Link>
               </li>
 
               <li className="nav-item">
-                <a href="./science" className="nav-link active">Science</a>
+                <Link to="/entertainment" className="nav-link active">Entertainment</Link>
               </li>
 
               <li className="nav-item">
-                <a href="./sports" className="nav-link active">Sports</a>
+                <Link to="/health" className="nav-link active">Health</Link>
               </li>
 
               <li className="nav-item">
-                <a href="./technology" className="nav-link active">Technology</a>
+                <Link to="/science" className="nav-link active">Science</Link>
+              </li>
+
+              <li className="nav-item">
+                <Link to="/sports" className="nav-link active">Sports</Link>
+              </li>
+
+              <li className="nav-item">
+                <Link to="/technology" className="nav-link active">Technology</Link>
               </li>
             </ul>
+
             <div className='form-check form-switch text-dark'>
                 <input className="mr-40 form-check-input" type="checkbox" id="flexSwitchCheckDefault"/>
                 <label style={

@@ -79,7 +79,7 @@ export default class News extends Component {
     return (
 
       <div className="container mt-9">
-        <h2 className="my-4" style={div_Styling}>
+        <h2 className="my-4 text-center" style={div_Styling}>
           
           Worldwide News Top-HeadLines
         </h2>
@@ -97,6 +97,9 @@ export default class News extends Component {
                   }
                   url={element.url}
                   imageUrl={element.urlToImage}
+                  author= {element.author}
+                  time = {element.publishedAt}
+                  source = {element.source.name}
                 />
               </div>
             );
