@@ -8,7 +8,7 @@ export default class NewsItem extends Component {
     let { title, description, url, imageUrl, author, time, source} = this.props;
     return (
       <div>
-        <div className="card " style={this.sty}>
+        <div className="card" style={this.sty}>
           <img
             className="card-img-top"
             src={
@@ -21,7 +21,7 @@ export default class NewsItem extends Component {
           <div className="card-body">
             <h5 className="card-title">{title}...</h5>
             <button type="button" className="btn btn-success">
-              <span class="badge badge-light">{!source?"Anonymous": source}</span>
+              <span className="badge badge-light">{!source?"Anonymous": source}</span>
             </button>
             <p className="card-text">{description}...</p>
             <p className="card-text text-left">
