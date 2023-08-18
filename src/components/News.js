@@ -9,7 +9,6 @@ const News = (props) =>{
   const [loading, setLoading] = useState(false);
   const [totalA, settotalA] = useState(0);
   
-  
 
   const updateNews = async () => {
     props.setProgress(25);
@@ -41,7 +40,7 @@ const News = (props) =>{
   };
 
   useEffect(() => {
-    updateNews();
+    updateNews();// eslint-disable-next-line
   }, [])
   
 
