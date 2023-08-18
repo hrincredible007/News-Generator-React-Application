@@ -1,14 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class NewsItem extends Component {
-  // sty = {
-  //   width : '18rem'
-  // }
-  render() {
-    let { title, description, url, imageUrl, author, time, source} = this.props;
+const NewsItem = (props)=>{
+
+    let { title, description, url, imageUrl, author, time, source} = props;
     return (
       <div>
-        <div className="card" style={this.sty}>
+        <div className="card">
           <img
             className="card-img-top"
             src={
@@ -43,5 +40,6 @@ export default class NewsItem extends Component {
         </div>
       </div>
     );
-  }
 }
+
+export default NewsItem;
